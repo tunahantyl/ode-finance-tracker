@@ -56,7 +56,7 @@ Sonra GitHub'da yeni repo oluştur (private veya public):
 2. README/LICENSE/gitignore EKLEME (zaten var).
 3. Komutlar:
    ```bash
-   git remote add origin git@github.com:<KULLANICI_ADI>/ode-finance-tracker.git
+   git remote add origin git@github.com:tunahantyl/ode-finance-tracker.git
    git branch -M main
    git push -u origin main
    ```
@@ -90,7 +90,7 @@ VPS'ine SSH ile bağlan (örn. `ssh root@<VPS_IP>`).
 ```bash
 # Repo'yu çek (root olarak)
 cd /tmp
-git clone https://github.com/<KULLANICI_ADI>/ode-finance-tracker.git
+git clone https://github.com/tunahantyl/ode-finance-tracker.git
 cd ode-finance-tracker
 
 # Bootstrap
@@ -114,7 +114,7 @@ Bu script:
 
 ```bash
 # Repo'yu kalıcı yere koy
-sudo -u ode git clone https://github.com/<KULLANICI_ADI>/ode-finance-tracker.git /var/www/ode
+sudo -u ode git clone https://github.com/tunahantyl/ode-finance-tracker.git /var/www/ode
 
 # Production .env oluştur
 sudo -u ode cp /var/www/ode/backend/.env.production.example /var/www/ode/backend/.env

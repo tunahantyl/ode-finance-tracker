@@ -21,6 +21,9 @@ backend/logs/
 frontend/dist/
 frontend/.vite/
 
+# TypeScript build cache
+*.tsbuildinfo
+
 # Allow examples
 !.env.example
 !.env.production.example
