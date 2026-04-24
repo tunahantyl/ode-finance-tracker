@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ink/15 ring-offset-2 ring-offset-canvas;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl2 border border-line shadow-card;
+  }
+  .input-base {
+    @apply w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink
+           placeholder:text-muted/70 transition
+           focus:border-ink/30 focus:ring-2 focus:ring-ink/10 focus:outline-none
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium
+           transition active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/15
+           focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-white hover:bg-ink/90;
+  }
+  .btn-ghost {
+    @apply btn text-ink/80 hover:bg-ink/[0.04];
+  }
+  .btn-outline {
+    @apply btn border border-line bg-white text-ink hover:bg-ink/[0.03];
+  }
+  .skeleton {
+    background: linear-gradient(90deg, #EEF2F6 0px, #F6F7F9 200px, #EEF2F6 400px);
+    background-size: 800px 100%;
+    @apply animate-shimmer rounded-md;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+}
+
+/* Recharts override: minimal grid line */
+.recharts-cartesian-grid line {
+  stroke: #EEF2F6 !important;
+}
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}

@@ -1,0 +1,48 @@
+# =============================================================
+# Auto-deploy backend to VPS on push to main.
+#
+# Required GitHub repository secrets:
+#   VPS_HOST       -> IP veya domain (örn. 95.x.x.x veya api.tunatest2.site)
+#   VPS_PORT       -> SSH port (varsayılan 22)
+#   VPS_USER       -> SSH kullanıcı adı (örn. ode)
+#   VPS_SSH_KEY    -> SSH özel anahtar (PEM/OpenSSH formatında, parolasız)
+#   VPS_APP_DIR    -> /var/www/ode
+# =============================================================
+
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'deploy/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host:     ${{ secrets.VPS_HOST }}
+          port:     ${{ secrets.VPS_PORT }}
+          username: ${{ secrets.VPS_USER }}
+          key:      ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            set -e
+            cd ${{ secrets.VPS_APP_DIR }}
+            git fetch --all
+            git reset --hard origin/main
+            cd backend
+            npm install --omit=dev --no-audit --no-fund
+            npm run db:migrate
+            pm2 startOrReload ecosystem.config.cjs --update-env
+            pm2 save
+            echo "[deploy] OK at $(date -Is)"

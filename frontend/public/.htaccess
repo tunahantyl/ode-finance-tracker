@@ -1,0 +1,51 @@
+# =============================================================
+# Öde - Hostinger SPA fallback + caching + security
+# Bu dosya `dist/` build çıktısının köküne kopyalanmalı.
+# Vite `public/.htaccess` dosyalarını otomatik olarak `dist/`'e kopyalar.
+# =============================================================
+
+# Force HTTPS (Hostinger Let's Encrypt zaten kurulu)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Strip "www." (opsiyonel — kapatmak için aşağıdaki 2 satırı yorumlayın)
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ https://%{HTTP_REWRITE_BASE}%1%{REQUEST_URI} [L,R=301]
+
+  # SPA fallback: dosya/dizin değilse index.html'e yönlendir
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Statik varlıkları uzun süre cache'le (Vite hash'li dosya isimleri kullanır)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# index.html — asla cache'leme
+<IfModule mod_headers.c>
+  <FilesMatch "index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+
+  # Güvenlik header'ları
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Gzip
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
