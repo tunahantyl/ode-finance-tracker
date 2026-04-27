@@ -13,16 +13,16 @@
 Projenin ana akışını tek bakışta görmek için aşağıdaki ekranlara göz atabilirsin:
 
 #### Genel Bakış
-![Genel Bakış](./bunlarıhallet/genelbakis.png)
+![Genel Bakış](./projefotolari/genelbakis.png)
 
 #### Sol Bar
-![Sol Bar](./bunlarıhallet/solbar.png)
+![Sol Bar](./projefotolari/solbar.png)
 
 #### Raporlar
-![Raporlar](./bunlarıhallet/raporlar.png)
+![Raporlar](./projefotolari/raporlar.png)
 
 #### Mobil Genel Goruntu
-![Mobil Genel Goruntu](./bunlarıhallet/mobil%20genel%20g%C3%B6r%C3%BCnt%C3%BC.png)
+![Mobil Genel Goruntu](./projefotolari/mobil%20genel%20g%C3%B6r%C3%BCnt%C3%BC.png)
 
 ### 🛠️ Stack
 ![Node.js](https://img.shields.io/badge/Node.js-22-339933?logo=node.js&logoColor=white)
