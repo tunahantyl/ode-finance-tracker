@@ -74,7 +74,7 @@ export default function TransactionsPage() {
     <div className="space-y-6">
       <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-ink">İşlemler</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold text-ink">İşlemler</h1>
           <p className="text-sm text-muted">Tüm gelir ve gider hareketleriniz.</p>
         </div>
         <Button
@@ -83,6 +83,7 @@ export default function TransactionsPage() {
             setEditing(null);
             setOpenForm(true);
           }}
+          className="w-full sm:w-auto justify-center"
         >
           Yeni İşlem
         </Button>
@@ -141,7 +142,7 @@ export default function TransactionsPage() {
               </option>
             ))}
           </Select>
-          <div className="space-y-1.5">
+          <div className="space-y-1.5 col-span-2 lg:col-span-1">
             <label className="block text-sm font-medium text-ink/80">Açıklama Ara</label>
             <div className="relative">
               <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
@@ -157,7 +158,7 @@ export default function TransactionsPage() {
       </Card>
 
       {/* Totals */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <SmallStat label="Gelir" value={fmtCurrency(totals.income)} className="text-positive" />
         <SmallStat label="Gider" value={fmtCurrency(totals.expense)} className="text-negative" />
         <SmallStat label="Net" value={fmtCurrency(totals.income - totals.expense)} />
@@ -182,7 +183,7 @@ export default function TransactionsPage() {
                 <ul className="space-y-1">
                   {items.map((tx) => (
                     <li key={tx.id} className="group flex items-center gap-1">
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <TransactionRow
                           tx={tx}
                           onClick={() => {
@@ -191,9 +192,9 @@ export default function TransactionsPage() {
                           }}
                         />
                       </div>
-                      <div className="flex opacity-0 group-hover:opacity-100 transition pr-1">
+                      <div className="flex opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition pr-0 sm:pr-1 shrink-0">
                         <button
-                          className="p-2 rounded-md text-muted hover:text-ink hover:bg-ink/[0.04]"
+                          className="hidden sm:inline-flex p-2 rounded-md text-muted hover:text-ink hover:bg-ink/[0.04]"
                           onClick={() => {
                             setEditing(tx);
                             setOpenForm(true);
@@ -259,9 +260,17 @@ function SmallStat({
   className?: string;
 }) {
   return (
-    <div className="card p-4">
-      <p className="text-xs font-medium uppercase tracking-wider text-muted">{label}</p>
-      <p className={`mt-2 text-lg font-semibold tabular-nums ${className ?? 'text-ink'}`}>{value}</p>
+    <div className="card p-3 sm:p-4">
+      <p className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-muted truncate">
+        {label}
+      </p>
+      <p
+        className={`mt-1.5 sm:mt-2 text-sm sm:text-lg font-semibold tabular-nums break-words ${
+          className ?? 'text-ink'
+        }`}
+      >
+        {value}
+      </p>
     </div>
   );
 }

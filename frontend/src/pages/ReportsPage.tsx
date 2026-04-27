@@ -21,7 +21,7 @@ export default function ReportsPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold text-ink">Raporlar</h1>
+        <h1 className="text-xl sm:text-2xl font-semibold text-ink">Raporlar</h1>
         <p className="text-sm text-muted">Tarih aralığına göre detaylı analiz.</p>
       </header>
 

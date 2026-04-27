@@ -21,8 +21,14 @@ export default function AuthLayout() {
         </div>
         <p className="text-xs text-white/50">© Öde · Bütçe Takibi</p>
       </div>
-      <div className="flex items-center justify-center p-6 sm:p-12">
+      <div className="flex flex-col items-center justify-center p-5 sm:p-12">
         <div className="w-full max-w-sm">
+          <div className="flex lg:hidden items-center gap-2 mb-8">
+            <div className="h-9 w-9 rounded-lg bg-ink text-white text-base font-bold flex items-center justify-center">
+              Ö
+            </div>
+            <span className="font-semibold text-lg text-ink">Öde</span>
+          </div>
           <Outlet />
         </div>
       </div>

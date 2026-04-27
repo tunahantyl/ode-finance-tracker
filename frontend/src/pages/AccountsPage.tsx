@@ -55,9 +55,9 @@ export default function AccountsPage() {
 
   return (
     <div className="space-y-6">
-      <header className="flex items-center justify-between">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-ink">Hesaplar</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold text-ink">Hesaplar</h1>
           <p className="text-sm text-muted">Nakit, banka ve kart hesaplarınızı yönetin.</p>
         </div>
         <Button
@@ -66,6 +66,7 @@ export default function AccountsPage() {
             setEditing(null);
             setOpen(true);
           }}
+          className="w-full sm:w-auto justify-center"
         >
           Yeni Hesap
         </Button>
@@ -73,7 +74,9 @@ export default function AccountsPage() {
 
       <Card>
         <CardHeader title="Toplam Bakiye" subtitle="Tüm aktif hesaplar" />
-        <p className="text-3xl font-semibold text-ink tabular-nums">{fmtCurrency(total)}</p>
+        <p className="text-2xl sm:text-3xl font-semibold text-ink tabular-nums break-words">
+          {fmtCurrency(total)}
+        </p>
       </Card>
 
       {accounts.isLoading ? (
@@ -135,7 +138,7 @@ export default function AccountsPage() {
                 <p className="text-xs text-muted">Mevcut Bakiye</p>
                 <p
                   className={
-                    'text-xl font-semibold tabular-nums ' +
+                    'text-lg sm:text-xl font-semibold tabular-nums break-words ' +
                     (a.currentBalance < 0 ? 'text-negative' : 'text-ink')
                   }
                 >

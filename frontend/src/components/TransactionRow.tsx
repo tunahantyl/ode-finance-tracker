@@ -14,10 +14,10 @@ export function TransactionRow({ tx, onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-ink/[0.03] text-left transition"
+      className="w-full flex items-center gap-2.5 sm:gap-3 px-1.5 sm:px-2 py-2.5 rounded-lg hover:bg-ink/[0.03] text-left transition"
     >
       <div
-        className="h-10 w-10 shrink-0 rounded-full flex items-center justify-center"
+        className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full flex items-center justify-center"
         style={{ background: `${color}1A`, color }}
       >
         {isIncome ? <ArrowDownLeft className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
@@ -30,18 +30,20 @@ export function TransactionRow({ tx, onClick }: Props) {
           {tx.category?.name ?? 'Kategorisiz'} · {tx.account.name}
         </p>
       </div>
-      <div className="text-right">
+      <div className="text-right shrink-0 max-w-[40%]">
         <p
           className={
             isIncome
-              ? 'text-sm font-semibold text-positive tabular-nums'
-              : 'text-sm font-semibold text-ink tabular-nums'
+              ? 'text-sm font-semibold text-positive tabular-nums truncate'
+              : 'text-sm font-semibold text-ink tabular-nums truncate'
           }
         >
           {isIncome ? '+' : '−'}
           {fmtCurrency(tx.amount).replace(/^[+-]/, '')}
         </p>
-        <p className="text-xs text-muted">{fmtDateShort(tx.transactionDate)}</p>
+        <p className="text-[11px] sm:text-xs text-muted truncate">
+          {fmtDateShort(tx.transactionDate)}
+        </p>
       </div>
     </button>
   );

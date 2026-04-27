@@ -53,18 +53,18 @@ export default function DashboardPage() {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm text-muted">{greeting},</p>
-          <h1 className="mt-0.5 text-2xl font-semibold text-ink">
+          <h1 className="mt-0.5 text-xl sm:text-2xl font-semibold text-ink">
             {user?.fullName?.split(' ')[0] ?? 'Hoş geldiniz'}
           </h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div className="inline-flex p-1 rounded-lg bg-ink/[0.04]">
             {RANGES.map((r) => (
               <button
                 key={r.id}
                 onClick={() => setRangeId(r.id)}
                 className={
-                  'rounded-md px-3 py-1.5 text-xs font-medium transition ' +
+                  'rounded-md px-2.5 sm:px-3 py-1.5 text-xs font-medium transition ' +
                   (rangeId === r.id
                     ? 'bg-white text-ink shadow-sm'
                     : 'text-muted hover:text-ink')
@@ -74,7 +74,11 @@ export default function DashboardPage() {
               </button>
             ))}
           </div>
-          <Button icon={<Plus className="h-4 w-4" />} onClick={() => setOpenForm(true)}>
+          <Button
+            icon={<Plus className="h-4 w-4" />}
+            onClick={() => setOpenForm(true)}
+            className="ml-auto sm:ml-0"
+          >
             Yeni İşlem
           </Button>
         </div>

@@ -58,3 +58,37 @@
 .recharts-tooltip-wrapper {
   outline: none !important;
 }
+
+/* Container queries: donut + legend layout adapts to the parent card width
+   (Dashboard card ≈ 300px → stacked, Reports card ≈ 800px → side-by-side) */
+.donut-host {
+  container-type: inline-size;
+}
+.donut-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+.donut-grid .donut-canvas {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 260px;
+}
+.donut-grid .donut-legend {
+  max-height: none;
+}
+@container (min-width: 460px) {
+  .donut-grid {
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem;
+  }
+  .donut-grid .donut-canvas {
+    max-width: none;
+  }
+  .donut-grid .donut-legend {
+    max-height: 240px;
+    overflow: auto;
+  }
+}

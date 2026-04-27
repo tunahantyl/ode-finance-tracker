@@ -46,9 +46,9 @@ export default function CategoriesPage() {
 
   return (
     <div className="space-y-6">
-      <header className="flex items-center justify-between">
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-ink">Kategoriler</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold text-ink">Kategoriler</h1>
           <p className="text-sm text-muted">
             Gelir ve giderlerinizi düzenli tutmak için kategorileri yönetin.
           </p>
@@ -59,6 +59,7 @@ export default function CategoriesPage() {
             setEditing(null);
             setOpen(true);
           }}
+          className="w-full sm:w-auto justify-center"
         >
           Yeni Kategori
         </Button>
@@ -95,8 +96,8 @@ export default function CategoriesPage() {
                 >
                   <Tag className="h-3.5 w-3.5" />
                 </div>
-                <p className="flex-1 text-sm font-medium text-ink">{c.name}</p>
-                <div className="flex opacity-0 group-hover:opacity-100 transition">
+                <p className="flex-1 min-w-0 text-sm font-medium text-ink truncate">{c.name}</p>
+                <div className="flex opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition shrink-0">
                   <button
                     onClick={() => {
                       setEditing(c);
