@@ -8,6 +8,22 @@
 - **Web:** https://tunatest2.site
 - **API:** https://api.tunatest2.site/api/health
 
+### 📸 Uygulama Ekran Görüntüleri
+
+Projenin ana akışını tek bakışta görmek için aşağıdaki ekranlara göz atabilirsin:
+
+#### Genel Bakış
+![Genel Bakış](./bunlarıhallet/genelbakis.png)
+
+#### Sol Bar
+![Sol Bar](./bunlarıhallet/solbar.png)
+
+#### Raporlar
+![Raporlar](./bunlarıhallet/raporlar.png)
+
+#### Mobil Genel Goruntu
+![Mobil Genel Goruntu](./bunlarıhallet/mobil%20genel%20g%C3%B6r%C3%BCnt%C3%BC.png)
+
 ### 🛠️ Stack
 ![Node.js](https://img.shields.io/badge/Node.js-22-339933?logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
