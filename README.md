@@ -10,19 +10,34 @@
 
 ### 📸 Uygulama Ekran Görüntüleri
 
-Projenin ana akışını tek bakışta görmek için aşağıdaki ekranlara göz atabilirsin:
+Uygulamanın ana akışını birkaç ekran üzerinden hızlıca tanıyabilirsin:
 
-#### Genel Bakış
-![Genel Bakış](./projefotolari/genelbakis.png)
-
-#### Sol Bar
-![Sol Bar](./projefotolari/solbar.png)
-
-#### Raporlar
-![Raporlar](./projefotolari/raporlar.png)
-
-#### Mobil Genel Goruntu
-![Mobil Genel Goruntu](./projefotolari/mobil%20genel%20g%C3%B6r%C3%BCnt%C3%BC.png)
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="./projefotolari/genelbakis.png" alt="Genel Bakış" width="100%"/>
+      <p><b>Dashboard — Genel Bakış</b><br/>
+      <sub>Toplam bakiye, ay özeti (gelir / gider / net), kategori dağılımı ve son işlemler tek ekranda. Kart hiyerarşisi “önce sayı, sonra detay” ilkesiyle kurgulandı.</sub></p>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="./projefotolari/solbar.png" alt="Navigasyon (Sol Bar)" width="100%"/>
+      <p><b>Navigasyon (Sol Bar)</b><br/>
+      <sub>Sade ve sabit kenar çubuğu: Dashboard, İşlemler, Hesaplar, Kategoriler, Raporlar. Aktif sayfa vurgulanır; küçük ekranlarda otomatik gizlenir.</sub></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="./projefotolari/raporlar.png" alt="Raporlar" width="100%"/>
+      <p><b>Raporlar</b><br/>
+      <sub>Recharts ile gelir–gider zaman serisi (günlük / aylık) ve kategori bazlı donut grafiği. Tema renkleriyle uyumlu, <code>tabular-nums</code> ile rakamlar zıplamadan akar.</sub></p>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="./projefotolari/mobil%20genel%20g%C3%B6r%C3%BCnt%C3%BC.png" alt="Mobil Görünüm" width="55%"/>
+      <p><b>Mobil Görünüm</b><br/>
+      <sub>Responsive layout: kartlar tek sütuna iner, grafiklerin eksen / fontu küçülür, dokunma hedefleri 44px+. Cep ekranında da aynı bilgi mimarisi korunur.</sub></p>
+    </td>
+  </tr>
+</table>
 
 ### 🛠️ Stack
 ![Node.js](https://img.shields.io/badge/Node.js-22-339933?logo=node.js&logoColor=white)
